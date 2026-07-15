@@ -23,7 +23,7 @@ try:
         sys.exit(1)
 
     # Let the camera adjust
-    time.sleep(1)
+    time.sleep(2.5)
 
     success, frame = camera.read()
 

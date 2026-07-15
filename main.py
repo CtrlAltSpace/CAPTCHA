@@ -22,9 +22,18 @@ try:
         print("Error: Could not open webcam.")
         sys.exit(1)
 
-    # Let the camera adjust
-    time.sleep(2.5)
+    # Give the webcam time to initialize
+    time.sleep(1)
 
+    # Let the webcam adjust its exposure and white balance
+    for _ in range(30):
+        success, frame = camera.read()
+        if not success:
+            print("Warning: Failed to read warm-up frame.")
+            continue
+        time.sleep(0.03)
+
+    # Capture the final image
     success, frame = camera.read()
 
     if not success:
